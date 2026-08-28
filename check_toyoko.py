@@ -8,13 +8,9 @@ html = requests.get(
     headers={"User-Agent": "Mozilla/5.0"}
 ).text
 
-for word in [
-    "vacancy",
-    "available",
-    "room",
-    "空室",
-    "満室",
-    "reserve",
-    "booking"
-]:
-    print(word, html.lower().count(word.lower()))
+for m in re.finditer("vacancy", html.lower()):
+    start = max(0, m.start() - 150)
+    end = min(len(html), m.start() + 300)
+
+    print("================================")
+    print(html[start:end])
