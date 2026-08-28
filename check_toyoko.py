@@ -7,5 +7,10 @@ response = requests.get(
     headers={"User-Agent": "Mozilla/5.0"}
 )
 
-print(response.status_code)
-print(response.text[:5000])
+html = response.text
+
+print("満室:", "満室" in html)
+print("空室:", "空室" in html)
+print("予約可能:", "予約可能" in html)
+print("予約する:", "予約する" in html)
+print("空室なし:", "空室なし" in html)
