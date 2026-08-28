@@ -9,8 +9,5 @@ response = requests.get(
 
 html = response.text
 
-print("満室:", "満室" in html)
-print("空室:", "空室" in html)
-print("予約可能:", "予約可能" in html)
-print("予約する:", "予約する" in html)
-print("空室なし:", "空室なし" in html)
+print("空室なし出現回数:", html.count("空室なし"))
+print("空室出現回数:", html.count("空室"))
