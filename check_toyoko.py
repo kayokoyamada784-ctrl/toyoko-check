@@ -8,9 +8,17 @@ html = requests.get(
     headers={"User-Agent": "Mozilla/5.0"}
 ).text
 
-for m in re.finditer("vacancy", html.lower()):
-    start = max(0, m.start() - 150)
-    end = min(len(html), m.start() + 300)
+for hotel in [
+    "東横INN池袋北口",
+    "東横INN大塚駅北口",
+    "東横INN赤羽駅東口"
+]:
+    pos = html.find(hotel)
 
-    print("================================")
-    print(html[start:end])
+    print("\n")
+    print("=" * 50)
+    print(hotel)
+    print("=" * 50)
+
+    if pos != -1:
+        print(html[pos:pos+2000])
