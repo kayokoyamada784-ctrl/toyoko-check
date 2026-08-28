@@ -9,5 +9,5 @@ response = requests.get(
 
 html = response.text
 
-print("空室なし出現回数:", html.count("空室なし"))
-print("空室出現回数:", html.count("空室"))
+for hotel in ["池袋", "大塚", "赤羽"]:
+    print(hotel, hotel in html)
